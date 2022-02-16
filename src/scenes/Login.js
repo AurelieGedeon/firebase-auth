@@ -17,8 +17,9 @@ export default function Login({ user, setUser }) {
 
   useEffect(() => {
     const localUser = localStorage.getItem("displayName");
+    const avatar = localStorage.getItem("avatar");
     console.log("locaUser from LS", localUser);
-    if (localUser) setUser(localUser);
+    if (localUser) setUser({ ...user, displayName: localUser, photo: avatar });
   }, []);
 
   const handleFormSubmit = (event) => {
@@ -37,6 +38,9 @@ export default function Login({ user, setUser }) {
         setUser(result.user);
 
         localStorage.setItem("displayName", result.user.displayName);
+        localStorage.setItem("avatar", result.user.photoURL);
+        localStorage.setItem("uid", result.user.uid);
+
         console.log(result.user.displayName);
         navigate("/");
       })
