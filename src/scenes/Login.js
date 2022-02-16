@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   getAuth,
@@ -8,12 +8,19 @@ import {
 } from "firebase/auth";
 import { app } from "../ConnectAuth";
 
-export default function Login({ setUser }) {
+export default function Login({ user, setUser }) {
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
   const auth = getAuth(app);
+
+  useEffect(() => {
+    const localUser = localStorage.getItem("displayName");
+    console.log("locaUser from LS", localUser);
+    if (localUser) setUser(localUser);
+  }, []);
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
@@ -28,10 +35,13 @@ export default function Login({ setUser }) {
     signInWithPopup(auth, provider)
       .then((result) => {
         setUser(result.user);
-        console.log(result.user);
+
+        localStorage.setItem("displayName", result.user.displayName);
+        console.log(result.user.displayName);
         navigate("/");
       })
       .catch(alert);
+    console.log("Here is my user from my parent App component", user);
   };
   return (
     <>
