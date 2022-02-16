@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -71,16 +73,7 @@ export default function Login({ user, setUser }) {
         </label>
         <input type="submit" value="Login" />
       </form>
-      <button
-        onClick={handleGoogleLogin}
-        style={{
-          backgroundColor: "black",
-          color: "white",
-          border: "none",
-        }}
-      >
-        Sign in with Google
-      </button>
+      <Button onClick={handleGoogleLogin}>Sign in with Google</Button>
       <p>
         Not a user? <Link to="/signup">Sign Up</Link>
       </p>
