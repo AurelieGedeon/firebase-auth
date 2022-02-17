@@ -11,14 +11,15 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  font-family: "Festive", cursive;
+  font-family: "Open Sans", sans-serif;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Festive&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Festive&family=Open+Sans&display=swap");
 
 body {
-  font-family: "Festive", cursive;
-  background-color: limegreen;
+  font-family: "Open Sans", sans-serif;
+  background-color: rgb(127, 191, 187);
 }
 
 @media (max-width: 600px) {

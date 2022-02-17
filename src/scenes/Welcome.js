@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import Button from "react-bootstrap/Button";
+
 export default function Welcome({ user }) {
   console.log(user); //email, displayName, photoURL
 
@@ -20,7 +21,7 @@ export default function Welcome({ user }) {
       <h1>Welcome</h1>
       <h2>{user.displayName || user.email}</h2>
       {user.photoURL && (
-        <img src={user.photoURL} alt="Profile of logeed-in user" />
+        <img src={user.photoURL} alt="Profile of logged-in user" />
       )}
       <Button onClick={handleLogOut}>Logout</Button>
     </>

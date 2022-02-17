@@ -21,6 +21,8 @@ export default function Login({ user, setUser }) {
     const localUser = localStorage.getItem("displayName");
     const avatar = localStorage.getItem("avatar");
     console.log("locaUser from LS", localUser);
+
+    //navigate("/");
     if (localUser) setUser({ ...user, displayName: localUser, photo: avatar });
   }, []);
 
